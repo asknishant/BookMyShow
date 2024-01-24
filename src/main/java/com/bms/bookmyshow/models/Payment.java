@@ -2,6 +2,7 @@ package com.bms.bookmyshow.models;
 
 import com.bms.bookmyshow.enums.PaymentMethodType;
 import com.bms.bookmyshow.enums.PaymentStatus;
+import jakarta.persistence.Entity;
 import lombok.Getter;
 import lombok.Setter;
 
