@@ -12,7 +12,6 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "users")
 public class User extends BaseModel{
-    private String email;
-    private String name;
+    private String userName;
     private String password;
 }

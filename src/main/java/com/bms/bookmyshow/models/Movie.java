@@ -5,6 +5,7 @@ import com.bms.bookmyshow.enums.MovieFeature;
 import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.OneToMany;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -24,4 +25,7 @@ public class Movie extends BaseModel {
     @ElementCollection
     @Enumerated
     private List<MovieFeature> features = new ArrayList<>();
+
+    @OneToMany(mappedBy = "movie") // Once you have bi-dir relationship btw entities, the mappedBy is used on the M side and @JoinCoulumn on 1 side.
+    private List<Show> shows = new ArrayList<>();
 }
