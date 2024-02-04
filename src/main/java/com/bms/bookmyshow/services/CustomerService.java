@@ -42,4 +42,7 @@ public class CustomerService {
                 .build();
         return customerRepository.save(customer);
     }
+    public Customer getCustomerInternal(Long userId) {
+        return customerRepository.findById(userId).orElse(null);
+    }
 }

@@ -1,10 +1,9 @@
 package com.bms.bookmyshow.models;
 
 import com.bms.bookmyshow.enums.BookingStatus;
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -12,12 +11,13 @@ import java.util.LinkedList;
 import java.util.List;
 @Getter
 @Setter
+@Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
+@Builder(toBuilder = true)
 public class Booking extends BaseModel {
     @ManyToOne
-    private User user;
+    private Customer customer;
 
     @ManyToOne
     private Show show;
@@ -28,6 +28,8 @@ public class Booking extends BaseModel {
     private Double amount;
     private Date bookedAt;
 
+    @Enumerated
     private BookingStatus status;
+    @OneToMany
     private List<Payment> payments = new ArrayList<>();
 }
