@@ -4,6 +4,7 @@ import com.bms.bookmyshow.models.Seat;
 import com.bms.bookmyshow.repositories.SeatRepository;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,6 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class SeatService {
+    @Autowired
     private SeatRepository seatRepository;
 
     public List<Seat> saveAll(List<Seat> seats) {

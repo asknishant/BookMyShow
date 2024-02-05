@@ -39,16 +39,18 @@ public class ScreenService {
 
     public Screen createScreen(CreateScreenRequest request) {
 
-        Screen hallRequest = Screen.builder()
+        Screen screenRequest = Screen.builder()
                 .name(request.getName())
-                .features(request.getFeatures())
+//                .movieFeatureList(request.getFeatures())
                 .build();
-        Screen initialHall = screenRepository.save(hallRequest);
+        Screen initialScreen = screenRepository.save(screenRequest);
 
-        List<Seat> seats = toSeats(initialHall, request.getSeatRanges());
+        List<Seat> seats = toSeats(initialScreen, request.getSeatRanges());
         List<Seat> savedSeats = seatService.saveAll(seats);
 
-        return screenRepository.save(initialHall.toBuilder().seats(savedSeats).build());
+        Screen finalScreen = initialScreen.toBuilder().seats(savedSeats).build();
+
+        return screenRepository.save(finalScreen);
     }
 
     public Screen getScreen(Long id) {

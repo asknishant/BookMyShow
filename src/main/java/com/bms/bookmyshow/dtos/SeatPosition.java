@@ -4,6 +4,6 @@ import lombok.Data;
 
 @Data
 public class SeatPosition {
-    private Integer rowNo;
+    private String rowNo;
     private Integer columnNo;
 }

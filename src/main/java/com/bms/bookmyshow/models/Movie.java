@@ -26,7 +26,7 @@ public class Movie extends BaseModel {
 
     @ElementCollection
     @Enumerated
-    private List<MovieFeature> features = new ArrayList<>();
+    private List<MovieFeature> movieFeatures = new ArrayList<>();
 
     @OneToMany(mappedBy = "movie") // Once you have bi-dir relationship btw entities, the mappedBy is used on the M side and @JoinCoulumn on 1 side.
     private List<Show> shows = new ArrayList<>();

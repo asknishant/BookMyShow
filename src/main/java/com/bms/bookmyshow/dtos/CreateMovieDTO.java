@@ -19,7 +19,7 @@ public class CreateMovieDTO {
                 .name(name)
                 .ratings(rating)
                 .languages(languages)
-                .features(movieFeatures)
+                .movieFeatures(movieFeatures)
                 .build();
     }
 }

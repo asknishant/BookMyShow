@@ -5,6 +5,7 @@ import com.bms.bookmyshow.models.*;
 import com.bms.bookmyshow.repositories.ShowRepository;
 import com.bms.bookmyshow.repositories.ShowSeatRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,7 +15,7 @@ import java.util.NoSuchElementException;
 @Service
 @AllArgsConstructor
 public class ShowService {
-    private final ShowSeatRepository showSeatRepository;
+    private ShowSeatRepository showSeatRepository;
     private ScreenService screenService;
     private ShowRepository showRepository;
     private MovieService movieService;

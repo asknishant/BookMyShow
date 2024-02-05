@@ -11,7 +11,7 @@ import lombok.*;
 @Builder
 @Entity
 public class Seat extends BaseModel {
-    private Integer rowNo;
+    private String rowNo;
     private Integer colNo;
     @Enumerated(EnumType.ORDINAL) // mapping to numbers
     private SeatType seatType;

@@ -1,10 +1,8 @@
 package com.bms.bookmyshow.models;
 
 import com.bms.bookmyshow.enums.MovieFeature;
-import jakarta.persistence.ElementCollection;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.OneToMany;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.ArrayList;
@@ -17,9 +15,9 @@ import java.util.List;
 @Entity
 public class Screen extends BaseModel {
     private String name;
-    @OneToMany
+    @OneToMany(mappedBy = "screen", cascade = CascadeType.ALL)
     private List<Seat> seats = new ArrayList<>();
-    @ElementCollection
-    @Enumerated
-    private List<MovieFeature> features = new ArrayList<>();
+//    @ElementCollection
+//    @Enumerated
+//    private List<MovieFeature> movieFeatureList = new ArrayList<>();
 }
