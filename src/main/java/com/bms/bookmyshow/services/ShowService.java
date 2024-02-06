@@ -32,7 +32,6 @@ public class ShowService {
                 .screen(screen)
                 .startTime(request.getStartTime())
                 .duration(request.getDuration())
-                .movie(movie)
                 .build();
 
         Show savedShow = showRepository.save(show);
@@ -53,7 +52,7 @@ public class ShowService {
         // Save the show seats
         showSeatRepository.saveAll(showSeats);
         // Save the show again
-        return showRepository.save(savedShow.toBuilder().showSeats(showSeats).build());
+        return showRepository.save(savedShow.toBuilder().showSeats(showSeats).movie(movie).build());
     }
 
     public Show getShow(Long id) {

@@ -1,6 +1,7 @@
 package com.bms.bookmyshow.models;
 
 import com.bms.bookmyshow.enums.SeatType;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -17,5 +18,6 @@ public class Seat extends BaseModel {
     private SeatType seatType;
     @ManyToOne
     @JoinColumn(name = "screen_id")
+    @JsonBackReference
     private Screen screen;
 }

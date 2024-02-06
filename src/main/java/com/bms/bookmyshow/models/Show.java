@@ -1,5 +1,6 @@
 package com.bms.bookmyshow.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -21,6 +22,7 @@ public class Show extends BaseModel {
     private Date startTime;
     private Integer duration;
     @OneToMany
+    @JsonBackReference
     private List<ShowSeat> showSeats = new ArrayList<>();
     @ManyToOne
     private Screen screen;

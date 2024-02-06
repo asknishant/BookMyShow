@@ -10,11 +10,14 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1")
-@AllArgsConstructor
 @NoArgsConstructor
 public class ShowController {
-    @Autowired
     private ShowService showService;
+
+    @Autowired
+    public ShowController(ShowService showService) {
+        this.showService = showService;
+    }
 
     // READ API for show
     @GetMapping("/show/{id}")

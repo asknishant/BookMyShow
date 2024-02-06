@@ -2,6 +2,7 @@ package com.bms.bookmyshow.models;
 
 import com.bms.bookmyshow.enums.Language;
 import com.bms.bookmyshow.enums.MovieFeature;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Enumerated;
@@ -29,5 +30,6 @@ public class Movie extends BaseModel {
     private List<MovieFeature> movieFeatures = new ArrayList<>();
 
     @OneToMany(mappedBy = "movie") // Once you have bi-dir relationship btw entities, the mappedBy is used on the M side and @JoinCoulumn on 1 side.
+    @JsonBackReference
     private List<Show> shows = new ArrayList<>();
 }
