@@ -12,11 +12,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/v1/customer")
+@RequestMapping("/api/v1")
 @NoArgsConstructor
-@AllArgsConstructor
 public class BookingController {
     private BookingService bookingService;
+
+    @Autowired
+    public BookingController(BookingService bookingService) {
+        this.bookingService = bookingService;
+    }
+
     @PostMapping("/booking")
     public Booking createBooking(@RequestBody CreateBookingRequest bookingRequest) {
         return bookingService.createBooking(bookingRequest);

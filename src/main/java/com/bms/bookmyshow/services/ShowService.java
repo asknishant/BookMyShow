@@ -1,6 +1,7 @@
 package com.bms.bookmyshow.services;
 
 import com.bms.bookmyshow.dtos.CreateShowRequest;
+import com.bms.bookmyshow.enums.SeatStatus;
 import com.bms.bookmyshow.models.*;
 import com.bms.bookmyshow.repositories.ShowRepository;
 import com.bms.bookmyshow.repositories.ShowSeatRepository;
@@ -45,6 +46,7 @@ public class ShowService {
                 .map(seat ->
                         ShowSeat.builder()
                                 .seat(seat)
+                                .status(SeatStatus.AVAILABLE)
                                 .show(savedShow)
                                 .build()
                 ).toList();

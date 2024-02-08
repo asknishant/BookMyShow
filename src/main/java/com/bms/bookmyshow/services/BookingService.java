@@ -11,6 +11,7 @@ import com.bms.bookmyshow.repositories.BookingRepository;
 import com.bms.bookmyshow.strategies.PricingStrategy;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,17 +21,24 @@ import java.util.Date;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-@AllArgsConstructor
+
 @NoArgsConstructor
 @Service
 public class BookingService {
-
     private BookingRepository bookingRepository;
     private CustomerService customerService;
     private ShowService showService;
     private ShowSeatService showSeatService;
-
     private PricingStrategy pricingStrategy;
+
+    @Autowired
+    public BookingService(BookingRepository bookingRepository, CustomerService customerService, ShowService showService, ShowSeatService showSeatService, PricingStrategy pricingStrategy) {
+        this.bookingRepository = bookingRepository;
+        this.customerService = customerService;
+        this.showService = showService;
+        this.showSeatService = showSeatService;
+        this.pricingStrategy = pricingStrategy;
+    }
 
     @Transactional(isolation = Isolation.SERIALIZABLE)
     public Booking createBooking(CreateBookingRequest request) {
@@ -50,6 +58,7 @@ public class BookingService {
         List<ShowSeat> showSeats = showSeatService.getShowSeats(request.getShowSeatsId());
         for (ShowSeat seat : showSeats) {
             if (seat.getStatus() != SeatStatus.AVAILABLE) {
+                System.out.println(seat.getStatus());
                 throw new InvalidParameterException("Seat is not available");
             }
         }
